@@ -95,6 +95,7 @@ AsideでプロバイダーをJSONで設定する場合は、次の内容を使�
       "name": "Antigravity Local",
       "baseUrl": "http://127.0.0.1:8787/v1",
       "api": "openai-completions",
+      "apiKey": "<LOCAL_KEY>",
       "authHeader": true,
       "models": [
         {
@@ -111,7 +112,7 @@ AsideでプロバイダーをJSONで設定する場合は、次の内容を使�
 }
 ```
 
-- `authHeader: true` にすると、ローカルキーが `Authorization: Bearer <キー>` として送られます。キーは `node dist/cli.mjs key` で取得し、AsideのAPIキー欄に入力してください。共有したりcommitしたりするJSONには書かないでください。
+- `<LOCAL_KEY>` は `node dist/cli.mjs key` で表示されたローカルキーに置き換えてください。`authHeader: true` にすると、Asideはこのキーを `Authorization: Bearer <キー>` として送ります。本物のキーを書いたJSONは共有したりcommitしたりしないでください。
 - `id` は `node dist/cli.mjs models` で表示されたモデルIDに置き換えてください。複数のモデルを使う場合は `models` に項目を追加します。
 - `config.json` でポートを変更した場合は、`baseUrl` もそれに合わせてください。
 

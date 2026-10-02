@@ -114,6 +114,7 @@ If Aside asks for the provider configuration as JSON, use:
       "name": "Antigravity Local",
       "baseUrl": "http://127.0.0.1:8787/v1",
       "api": "openai-completions",
+      "apiKey": "<LOCAL_KEY>",
       "authHeader": true,
       "models": [
         {
@@ -130,7 +131,7 @@ If Aside asks for the provider configuration as JSON, use:
 }
 ```
 
-- `authHeader: true` sends the local key as `Authorization: Bearer <key>`. Enter the key from `node dist/cli.mjs key` in Aside's API key field; do not paste it into JSON you share or commit.
+- Replace `<LOCAL_KEY>` with the output of `node dist/cli.mjs key`. With `authHeader: true`, Aside sends it as `Authorization: Bearer <key>`. Do not share or commit JSON that contains the real key.
 - Replace `id` with a model ID returned by `node dist/cli.mjs models`. To add more models, add more entries to `models`.
 - If you changed the port in `config.json`, update `baseUrl` to match.
 
