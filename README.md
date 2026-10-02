@@ -36,8 +36,8 @@ Model availability and quotas are account-dependent. A Gemini Advanced subscript
 ### 1. Get the code and build
 
 ```bash
-git clone https://github.com/kosuketut/gemini_bridge.git
-cd gemini_bridge
+git clone https://github.com/kosuketut/gemini-bridge.git
+cd gemini-bridge
 npm ci --ignore-scripts
 npm run build
 ```

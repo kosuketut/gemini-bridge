@@ -21,8 +21,8 @@ AsideからGeminiのモデルを使うためのローカルbridgeです。Gemini
 ### 1. コードを取得してビルド
 
 ```bash
-git clone https://github.com/kosuketut/gemini_bridge.git
-cd gemini_bridge
+git clone https://github.com/kosuketut/gemini-bridge.git
+cd gemini-bridge
 npm ci --ignore-scripts
 npm run build
 ```
