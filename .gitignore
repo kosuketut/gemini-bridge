@@ -1,0 +1,6 @@
+node_modules/
+.aside-antigravity-bridge/
+*.log
+.DS_Store
+.test-dist/
+dist/

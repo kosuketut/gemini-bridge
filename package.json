@@ -1,0 +1,34 @@
+{
+  "name": "aside-antigravity-bridge",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Local OpenAI-compatible bridge from Aside to Google Antigravity / Cloud Code Assist",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/cli.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/cli.mjs --sourcemap",
+    "login": "npm run build --silent && node dist/cli.mjs login",
+    "serve": "npm run build --silent && node dist/cli.mjs serve",
+    "status": "npm run build --silent && node dist/cli.mjs status",
+    "key": "npm run build --silent && node dist/cli.mjs key",
+    "models": "npm run build --silent && node dist/cli.mjs models",
+    "install-service": "npm run build && node scripts/install-launchd.mjs",
+    "uninstall-service": "node scripts/uninstall-launchd.mjs",
+    "typecheck": "tsc --noEmit",
+    "test:build": "esbuild test/*.test.ts --bundle --platform=node --format=esm --target=node22 --outdir=.test-dist --out-extension:.js=.mjs",
+    "test": "npm run test:build --silent && node --test .test-dist/*.test.mjs",
+    "check": "npm run typecheck && npm run build && npm test"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "0.84.2",
+    "@earendil-works/pi-coding-agent": "0.84.2",
+    "esbuild": "0.25.12",
+    "pi-antigravity": "0.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.0.0",
+    "typescript": "6.0.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
