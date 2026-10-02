@@ -84,6 +84,37 @@ node dist/cli.mjs models
 
 `gemini-3.8-flash` は一例です。アカウントによって使えるモデルが違うので、一覧に出てきたIDを選んでください。
 
+#### JSONで設定する場合
+
+AsideでプロバイダーをJSONで設定する場合は、次の内容を使います。
+
+```json
+{
+  "providers": {
+    "gemini-provider": {
+      "name": "Antigravity Local",
+      "baseUrl": "http://127.0.0.1:8787/v1",
+      "api": "openai-completions",
+      "authHeader": true,
+      "models": [
+        {
+          "id": "gemini-3.8-flash",
+          "name": "Gemini 3.8 Flash",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1048576,
+          "maxTokens": 65536
+        }
+      ]
+    }
+  }
+}
+```
+
+- `authHeader: true` にすると、ローカルキーが `Authorization: Bearer <キー>` として送られます。キーは `node dist/cli.mjs key` で取得し、AsideのAPIキー欄に入力してください。共有したりcommitしたりするJSONには書かないでください。
+- `id` は `node dist/cli.mjs models` で表示されたモデルIDに置き換えてください。複数のモデルを使う場合は `models` に項目を追加します。
+- `config.json` でポートを変更した場合は、`baseUrl` もそれに合わせてください。
+
 ### 6. モデルを選択
 
 **Settings → Models → Task models** でAntigravityのモデルを選び、新しいAsideタスクを開始します。

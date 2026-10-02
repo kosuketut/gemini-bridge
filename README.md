@@ -103,6 +103,37 @@ node dist/cli.mjs models
 
 Then add one of the returned IDs, for example `gemini-3.8-flash`. Do not assume every fallback model is enabled for the signed-in account.
 
+#### Configure with JSON
+
+If Aside asks for the provider configuration as JSON, use:
+
+```json
+{
+  "providers": {
+    "gemini-provider": {
+      "name": "Antigravity Local",
+      "baseUrl": "http://127.0.0.1:8787/v1",
+      "api": "openai-completions",
+      "authHeader": true,
+      "models": [
+        {
+          "id": "gemini-3.8-flash",
+          "name": "Gemini 3.8 Flash",
+          "reasoning": true,
+          "input": ["text", "image"],
+          "contextWindow": 1048576,
+          "maxTokens": 65536
+        }
+      ]
+    }
+  }
+}
+```
+
+- `authHeader: true` sends the local key as `Authorization: Bearer <key>`. Enter the key from `node dist/cli.mjs key` in Aside's API key field; do not paste it into JSON you share or commit.
+- Replace `id` with a model ID returned by `node dist/cli.mjs models`. To add more models, add more entries to `models`.
+- If you changed the port in `config.json`, update `baseUrl` to match.
+
 ### 6. Select the model
 
 Open **Settings → Models → Task models**, choose an Antigravity model, and start a new Aside task.
